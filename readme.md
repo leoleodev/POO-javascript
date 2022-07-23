@@ -1,6 +1,6 @@
-<h1> Progrmação Orientada a Objetos com Javascript </h1>
+<h1> Programação Orientada a Objetos com Javascript </h1>
 
-📌 <p align="justify">Esta é uma lista de exercícios simples sobre POO para exercitar os conhecimentos. As questões seguem um nível gradual de dificuldade. Ainda sim existem muitos outros conceitos dentro de programação orientada a objetos que desejo estudar. </p>
+📌 <p align="justify">Esta é uma lista de exercícios simples sobre POO para exercitar os conhecimentos. As questões seguem um nível gradual de dificuldade e não explanam todos os conceitos existentes em POO porém ainda desejo continuar estudando este paradigma. </p>
 
 📜 
 ## Segue a lista das questões:
