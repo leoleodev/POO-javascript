@@ -87,3 +87,10 @@
 
   i) O programa deve ter um menu principal oferecendo as opções acima.
 </p>
+<p align="justify">
+ 6) Criar nova classe Contas, com as seguintes variáveis: Nº da conta, Nome do titular 
+ e Valor do saldo. Criar os métodos depositar(), sacar(), extrato() exibindo as informações da conta. 
+ Crie 2 objetos chamados conta1 e conta2, instanciando a classe recém-criada Contas e atribua os devidos valores 
+ a cada um dos objetos, efetue alguns depósitos e depois realize alguns saques. Por fim, use os método extrato da classe 
+ Contas para mostrar os valores atualizados de cada um dos objetos.
+<p>
