@@ -1,26 +1,40 @@
 
+// 7) Simule um sistema de locação de livros de uma biblioteca, esta tem que
+// poder cadastrar novos livros e pessoas que alugam os livros. Esta biblioteca tem
+// um numero de exemplares das obras e as pessoas só podem alugar no máximo 2
+// livros.
 
-
-class Emprestimo{
-    constructor(pessoa ,livro, data){
-        this.pessoa = pessoa;
-        this.livro = livro;
-        this.data = data;
-    }
-    
-}
 
 class Livro{
     constructor(titulo, quantidade){
         this.titulo = titulo;
         this.quantidade = quantidade;
     }
+    verificacao(qtd){
+        if(qtd > 0){
+            this.quantidade -= 1;
+            return true;
+        }else{
+            console.log(`Não se econtra nenhum exemplar de ${this.titulo} biblioteca`);
+            return false;
+        }
+    }
 }
-
 class Pessoa{
-    constructor(nome, cpf){
+    constructor(nome, cpf, locacoes){
         this.nome = nome;
         this.cpf = cpf;
+        this.locacoes = locacoes;
+    }
+    locacao(loc){        
+        if (loc > 0){
+            this.locacoes -= 1;
+            return true;
+        }else{
+            console.log(`${this.nome} já alugou os 2 livros permitidos`);
+            return false;
+        }
+
     }
 }
 
@@ -48,11 +62,11 @@ const livros = [
     livro10
 ]
 
-const pessoa1 = new Pessoa("Leonardo", "123.456.789-00");
-const pessoa2 = new Pessoa("Fernando", "987.654.321-00");
-const pessoa3 = new Pessoa("Julita", "000.111.222-00");
-const pessoa4 = new Pessoa("Thiago", "333.444.555-00");
-const pessoa5 = new Pessoa("Irene", "666.777.888-99");
+const pessoa1 = new Pessoa("Leonardo", "123.456.789-00", 2);
+const pessoa2 = new Pessoa("Fernando", "987.654.321-00", 2);
+const pessoa3 = new Pessoa("Julita", "000.111.222-00", 2);
+const pessoa4 = new Pessoa("Thiago", "333.444.555-00", 2);
+const pessoa5 = new Pessoa("Irene", "666.777.888-99", 2);
 
 const pessoas = [
     pessoa1,
@@ -62,5 +76,30 @@ const pessoas = [
     pessoa5
 ]
 
-console.log(livros)
+function emprestimo(obra, locador, cpf){
+    livros.forEach((livro, key)=>{
+        if(livro.titulo === obra && livro.verificacao(livro.quantidade)){
+        
+            pessoas.forEach((pessoa, key)=>{
+
+                if(pessoa.nome === locador && pessoa.cpf === cpf && pessoa.locacao(pessoa.locacoes)) {
+                    console.log(`Livro ${livro.titulo} alugado para ${pessoa.nome}`);
+                }
+
+            })
+
+        }
+    })
+}
+
+// Exemplo de uso:
+
+emprestimo("Cronicas de Nárnia", "Irene", "666.777.888-99");
+emprestimo("Dom casmurro", "Irene", "666.777.888-99");
+emprestimo("O senhpr dos aneis", "Irene", "666.777.888-99");
+emprestimo("Dom casmurro", "Thiago", "333.444.555-00");
+
+
 console.log(pessoas)
+console.log(livros);
+
