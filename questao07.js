@@ -9,6 +9,7 @@ class Livro{
     constructor(titulo, quantidade){
         this.titulo = titulo;
         this.quantidade = quantidade;
+        this.qtdInicial = quantidade;
     }
     verificacao(qtd){
         if(qtd > 0){
@@ -18,6 +19,17 @@ class Livro{
             console.log(`Não se econtra nenhum exemplar de ${this.titulo} biblioteca`);
             return false;
         }
+    }
+    locado(){
+        if(this.qtdInicial != this.quantidade){
+            return true;
+        }else{
+            console.log('Devolução inválida');
+            return false;
+        }
+    }
+    recebimento(){
+        this.quantidade += 1;
     }
 }
 class Pessoa{
@@ -34,7 +46,15 @@ class Pessoa{
             console.log(`${this.nome} já alugou os 2 livros permitidos`);
             return false;
         }
-
+    }
+    entregaDeLivro(loc){        
+        if (loc < 3){
+            this.locacoes += 1;
+            return true;
+        }else{
+            console.log(`Entrega de livro inválida`);
+            return false;
+        }
     }
 }
 
@@ -77,11 +97,10 @@ const pessoas = [
 ]
 
 function emprestimo(obra, locador, cpf){
-    livros.forEach((livro, key)=>{
-        if(livro.titulo === obra && livro.verificacao(livro.quantidade)){
-        
-            pessoas.forEach((pessoa, key)=>{
 
+    livros.forEach((livro, key)=>{
+        if(livro.titulo === obra && livro.verificacao(livro.quantidade)){        
+            pessoas.forEach((pessoa, key)=>{
                 if(pessoa.nome === locador && pessoa.cpf === cpf && pessoa.locacao(pessoa.locacoes)) {
                     console.log(`Livro ${livro.titulo} alugado para ${pessoa.nome}`);
                 }
@@ -92,13 +111,31 @@ function emprestimo(obra, locador, cpf){
     })
 }
 
+function devolucao(obra, locador, cpf){
+
+    livros.forEach((livro, key)=>{
+        if(livro.titulo === obra && livro.locado()){
+            pessoas.forEach((pessoa, key)=>{
+                if(pessoa.nome === locador && pessoa.cpf === cpf && pessoa.entregaDeLivro(pessoa.locacoes)){
+                    livro.recebimento();
+                    console.log(`Entrega do livro ${livro.titulo} por ${pessoa.nome}`);
+                }
+            })
+        }
+    })
+}
+
 // Exemplo de uso:
 
 emprestimo("Cronicas de Nárnia", "Irene", "666.777.888-99");
-emprestimo("Dom casmurro", "Irene", "666.777.888-99");
-emprestimo("O senhpr dos aneis", "Irene", "666.777.888-99");
-emprestimo("Dom casmurro", "Thiago", "333.444.555-00");
+emprestimo("O moço loiro", "Irene", "666.777.888-99");
+emprestimo("O moço loiro", "Leonardo", "123.456.789-00");
 
+console.log(pessoas)
+console.log(livros);
+
+devolucao("Cronicas de Nárnia", "Irene", "666.777.888-99");
+devolucao("O moço loiro", "Irene", "666.777.888-99");
 
 console.log(pessoas)
 console.log(livros);
