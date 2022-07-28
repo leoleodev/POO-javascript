@@ -2,7 +2,7 @@
 // 7) Simule um sistema de locação de livros de uma biblioteca, esta tem que
 // poder cadastrar novos livros e pessoas que alugam os livros. Esta biblioteca tem
 // um numero de exemplares das obras e as pessoas só podem alugar no máximo 2
-// livros.
+// livros. Implemente também a funcionalidade de devolução de livros.
 
 
 class Livro{

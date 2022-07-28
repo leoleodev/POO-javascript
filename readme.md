@@ -94,3 +94,9 @@
  a cada um dos objetos, efetue alguns depósitos e depois realize alguns saques. Por fim, use os método extrato da classe 
  Contas para mostrar os valores atualizados de cada um dos objetos.
 <p>
+<p align="justify">
+ 7) Simule um sistema de locação de livros de uma biblioteca, esta tem que
+ poder cadastrar novos livros e pessoas que alugam os livros. Esta biblioteca tem
+ um numero de exemplares das obras e as pessoas só podem alugar no máximo 2
+ livros. Implemente também a funcionalidade de devolução de livros.
+<p>
